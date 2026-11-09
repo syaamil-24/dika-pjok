@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Belajar Futsal Seru - PJOK Interaktif</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{font-family:Nunito,Arial,sans-serif;background:#F4F7FF;color:#14142B;line-height:1.65;font-weight:600}
+h1,h2,h3{font-family:'Baloo 2',Arial,sans-serif;font-weight:800;line-height:1.1}
+:focus-visible{outline:4px solid #2563EB;outline-offset:3px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:#14142B;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;padding:10px 16px}
+.logo{color:#FFD60A;font-family:'Baloo 2',Arial,sans-serif;font-weight:800;font-size:1.3rem}
+.links a{color:#fff;text-decoration:none;font-weight:800;margin-left:14px;font-size:.95rem}
+.links a:hover{color:#FFD60A}
+.audio{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.ctl{border:2px solid #FFD60A;border-radius:10px;padding:5px 10px;font:800 .85rem Nunito,Arial,sans-serif;cursor:pointer;background:transparent;color:#fff}
+.ctl.on{background:#FFD60A;color:#14142B}
+.audio input[type=range]{width:90px;accent-color:#FFD60A}
+.hero{background:#FFD60A;padding:72px 20px 80px;border-bottom:4px solid #14142B;text-align:center}
+.hero h1{font-size:clamp(2.6rem,7vw,4.8rem);color:#14142B}
+.hero p{font-size:1.15rem;max-width:620px;margin:16px auto 28px}
+.btn{display:inline-block;background:#14142B;color:#FFD60A;border:3px solid #14142B;border-radius:12px;padding:12px 26px;font:800 1.05rem 'Baloo 2',Arial,sans-serif;cursor:pointer;text-decoration:none}
+.btn:active{transform:translate(2px,2px)}
+section{max-width:1000px;margin:0 auto;padding:48px 18px}
+section.alt{max-width:none;background:#fff;border-top:4px solid #14142B;border-bottom:4px solid #14142B}
+section.alt>div{max-width:1000px;margin:0 auto}
+.badge{display:inline-block;background:#14142B;color:#FFD60A;border-radius:8px;padding:2px 12px;font:800 .95rem 'Baloo 2',Arial,sans-serif;margin-bottom:10px}
+.sec-title{font-size:2.2rem;margin-bottom:10px}
+.lead{font-size:1.05rem;max-width:760px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-top:20px}
+.card{border:3px solid #14142B;border-radius:16px;padding:18px;box-shadow:5px 5px 0 #14142B}
+.card .ic{font-size:2.1rem}
+.card h3{margin:6px 0 4px;font-size:1.35rem}
+.card p{font-size:1rem}
+.c1{background:#FFD60A}.c2{background:#7CE38B}.c3{background:#8EC5FF}.c4{background:#FFB3D1}
+.rules{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.rules span{background:#14142B;color:#fff;border-radius:10px;padding:8px 14px;font-weight:800;font-size:.95rem}
+canvas{width:100%;height:auto;display:block;border:4px solid #14142B;border-radius:14px;margin-top:18px}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin-top:18px}
+.lg{display:flex;gap:12px;align-items:flex-start;background:#F4F7FF;border:3px solid #14142B;border-radius:14px;padding:12px;font-size:1rem}
+.num{flex:0 0 36px;height:36px;border-radius:50%;background:#FFD60A;border:3px solid #14142B;display:grid;place-items:center;font:800 1.1rem 'Baloo 2',Arial,sans-serif}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+.chip{background:#fff;border:3px solid #14142B;border-radius:10px;padding:8px 14px;font:800 1rem Nunito,Arial,sans-serif;cursor:pointer;color:#14142B}
+.chip.on{background:#2563EB;color:#fff}
+.bar-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:14px 0}
+select{font:800 1rem Nunito,Arial,sans-serif;border:3px solid #14142B;border-radius:10px;padding:6px 10px;background:#fff;color:#14142B}
+.info{background:#14142B;color:#fff;border-radius:14px;padding:14px 18px;font-weight:700;margin-top:14px;min-height:76px;font-size:1.05rem}
+.info b{color:#FFD60A}
+.quiz{background:#fff;border:3px solid #14142B;border-radius:18px;padding:22px;box-shadow:6px 6px 0 #14142B;background:#F4F7FF}
+.track{height:14px;background:#fff;border-radius:99px;border:3px solid #14142B;overflow:hidden}
+.track i{display:block;height:100%;width:0;background:#22B45A;transition:width .4s}
+.opts{display:grid;gap:10px;margin:16px 0}
+.opt{text-align:left;background:#fff;border:3px solid #14142B;border-radius:12px;padding:12px 16px;font:800 1.02rem Nunito,Arial,sans-serif;color:#14142B;cursor:pointer}
+.opt:disabled{cursor:default}
+.opt.ok{background:#22B45A;color:#fff}
+.opt.no{background:#FF2D78;color:#fff}
+.fb{font-weight:700;padding:12px;border-radius:12px;border:3px solid #14142B;margin-top:6px}
+footer{background:#14142B;color:#fff;text-align:center;padding:28px 16px}
+footer b{color:#FFD60A}
+@media (max-width:640px){.links{width:100%}.links a{margin:0 14px 0 0}.sec-title{font-size:1.8rem}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">⚽ Futsal Seru</div>
+  <div class="links"><a href="#materi">Materi</a><a href="#lapangan">Lapangan</a><a href="#teknik">Teknik</a><a href="#simulasi">Simulasi</a><a href="#kuis">Kuis</a></div>
+  <div class="audio">
+    <button class="ctl on" id="bMute" onclick="toggleMute()">🔊 Suara On</button>
+    <button class="ctl" id="bMus" onclick="toggleMusic()">🎵 Musik Off</button>
+    <button class="ctl on" id="bNar" onclick="toggleNar()">🗣️ Narasi On</button>
+    <input type="range" min="0" max="100" value="80" aria-label="Volume" oninput="setVol(this.value)">
+  </div>
+</nav>
+
+<header class="hero">
+  <h1>Belajar Futsal Seru!</h1>
+  <p>Materi PJOK interaktif: kenali lapangan, pelajari teknik dasar, lihat simulasi taktik 2D, lalu uji pemahamanmu lewat kuis.</p>
+  <a class="btn" href="#materi">Mulai belajar</a>
+</header>
+
+<section id="materi">
+  <span class="badge">Materi 1</span>
+  <h2 class="sec-title">Apa itu futsal?</h2>
+  <p class="lead">Futsal adalah permainan bola yang dimainkan dua tim, masing-masing terdiri dari 5 pemain termasuk penjaga gawang. Permainan dilakukan di lapangan yang lebih kecil dengan bola yang lebih kecil dan pantulan lebih rendah, sehingga menuntut kecepatan, ketepatan, dan kerja sama.</p>
+  <div class="grid">
+    <div class="card c1"><div class="ic">🏟️</div><h3>Lapangan kecil</h3><p>Ruang gerak terbatas membuat permainan cepat dan intens.</p></div>
+    <div class="card c2"><div class="ic">⚽</div><h3>Bola pantul rendah</h3><p>Bola mudah dikontrol di kaki, cocok untuk latihan teknik.</p></div>
+    <div class="card c3"><div class="ic">🤝</div><h3>Kerja sama tim</h3><p>Operan pendek dan gerakan tanpa bola menentukan hasil akhir.</p></div>
+  </div>
+  <div class="rules">
+    <span>⏱ 2 babak × 20 menit</span>
+    <span>🔁 Pergantian tanpa batas</span>
+    <span>🧤 1 penjaga gawang per tim</span>
+    <span>🎯 Tendangan bebas langsung setelah pelanggaran tim beruntun</span>
+  </div>
+</section>
+
+<section id="lapangan">
+  <span class="badge">Materi 2</span>
+  <h2 class="sec-title">Lapangan futsal</h2>
+  <p class="lead">Lapangan futsal berbentuk persegi panjang dengan ukuran standar FIFA sekitar 38–42 m × 18–22 m. Perhatikan nomor pada gambar, lalu cocokkan dengan keterangannya.</p>
+  <canvas id="peta" width="900" height="500" role="img" aria-label="Gambar lapangan futsal dengan penomoran bagian-bagiannya"></canvas>
+  <div class="legend">
+    <div class="lg"><div class="num">1</div><div>Garis dan lingkaran tengah. Lingkaran berjari-jari 3 m.</div></div>
+    <div class="lg"><div class="num">2</div><div>Area penalti. Dibentuk busur 6 m dari tiang gawang.</div></div>
+    <div class="lg"><div class="num">3</div><div>Titik penalti, berjarak 6 m dari garis gawang.</div></div>
+    <div class="lg"><div class="num">4</div><div>Titik penalti kedua, berjarak 10 m dari garis gawang.</div></div>
+    <div class="lg"><div class="num">5</div><div>Gawang, berukuran lebar 3 m dan tinggi 2 m.</div></div>
+  </div>
+</section>
+
+<section id="teknik" class="alt">
+  <div>
+    <span class="badge">Materi 3</span>
+    <h2 class="sec-title">Teknik dasar</h2>
+    <p class="lead">Tekan tombol Dengarkan untuk mendengar penjelasan setiap teknik.</p>
+    <div class="grid" id="tek"></div>
+  </div>
+</section>
+
+<section id="simulasi">
+  <span class="badge">Materi 4 · Interaktif</span>
+  <h2 class="sec-title">Simulator taktik 2D</h2>
+  <p class="lead">Pilih skenario, lalu tekan Putar. Biru: tim menyerang. Merah muda: tim bertahan. Kuning: penjaga gawang. Garis putus-putus menunjukkan arah bola.</p>
+  <div class="chips" id="chips"></div>
+  <canvas id="sim" width="900" height="500" role="img" aria-label="Simulasi pergerakan pemain dan bola di lapangan futsal"></canvas>
+  <div class="bar-row">
+    <button class="btn" id="bPlay" onclick="togglePlay()">▶ Putar</button>
+    <button class="btn" onclick="load(cur)">Ulang</button>
+    <label style="font-weight:800">Kecepatan
+      <select onchange="spd=+this.value">
+        <option value="0.5">0,5×</option>
+        <option value="1" selected>1×</option>
+        <option value="2">2×</option>
+      </select>
+    </label>
+  </div>
+  <div class="info" id="info" aria-live="polite"></div>
+</section>
+
+<section id="kuis" class="alt">
+  <div>
+    <span class="badge">Materi 5</span>
+    <h2 class="sec-title">Kuis futsal</h2>
+    <div class="quiz">
+      <div class="track"><i id="prog"></i></div>
+      <div id="quiz"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>📘 Media Pembelajaran PJOK · Materi Futsal Interaktif</p>
+  <p style="margin-top:8px">Dibuat oleh: <b>Dhika Putra Sumarna</b></p>
+  <p>NIM <b>41182191240021</b> · Universitas Muhammadiyah Indonesia</p>
+</footer>
+
+<script>
+/* ===== AUDIO ===== */
+let actx=null,master=null,muted=false,vol=.8,narr=true,musicOn=false,mTimer=null;
+const NOTES=[262,330,392,494,392,330,294,349];
+function ac(){
+  if(!actx){
+    actx=new (window.AudioContext||window.webkitAudioContext)();
+    master=actx.createGain();master.gain.value=muted?0:vol;master.connect(actx.destination);
+  }
+  if(actx.state==='suspended')actx.resume();
+  return actx;
+}
+function tone(f,d,type,v,to){
+  if(muted)return;
+  const c=ac(),o=c.createOscillator(),gn=c.createGain(),t=c.currentTime;
+  o.type=type;o.frequency.setValueAtTime(f,t);
+  if(to)o.frequency.exponentialRampToValueAtTime(to,t+d);
+  gn.gain.setValueAtTime(v,t);gn.gain.exponentialRampToValueAtTime(.001,t+d);
+  o.connect(gn);gn.connect(master);o.start(t);o.stop(t+d+.05);
+}
+const SFX={
+  klik:()=>tone(640,.08,'square',.12),
+  operan:()=>tone(520,.14,'triangle',.35,820),
+  tembak:()=>tone(200,.35,'sawtooth',.3,60),
+  benar:()=>[523,659,784,1046].forEach((f,i)=>setTimeout(()=>tone(f,.22,'sine',.3),i*110)),
+  salah:()=>tone(170,.35,'square',.22,90),
+  peluit:()=>{tone(2300,.3,'sine',.35,2600);setTimeout(()=>tone(2300,.3,'sine',.35,2600),400);}
+};
+function speak(t){
+  if(muted||!('speechSynthesis' in window))return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(t);
+  u.lang='id-ID';u.rate=.95;u.volume=vol;speechSynthesis.speak(u);
+}
+function say(t){if(narr)speak(t);}
+function toggleMute(){
+  ac();muted=!muted;
+  if(master)master.gain.value=muted?0:vol;
+  const b=document.getElementById('bMute');
+  b.textContent=muted?'🔇 Suara Off':'🔊 Suara On';b.classList.toggle('on',!muted);
+  if(muted&&'speechSynthesis' in window)speechSynthesis.cancel();
+}
+function setVol(v){vol=v/100;if(master)master.gain.value=muted?0:vol;}
+function toggleNar(){
+  narr=!narr;
+  const b=document.getElementById('bNar');
+  b.textContent=narr?'🗣️ Narasi On':'🗣️ Narasi Off';b.classList.toggle('on',narr);
+  if(!narr&&'speechSynthesis' in window)speechSynthesis.cancel();
+}
+function toggleMusic(){
+  ac();musicOn=!musicOn;let i=0;
+  const b=document.getElementById('bMus');
+  b.textContent=musicOn?'🎵 Musik On':'🎵 Musik Off';b.classList.toggle('on',musicOn);
+  clearInterval(mTimer);
+  if(musicOn)mTimer=setInterval(()=>tone(NOTES[i++%NOTES.length]/2,.45,'triangle',.07),420);
+}
+
+/* ===== TEKNIK ===== */
+const TEK=[
+  {ic:'⚡',t:'Menggiring bola',d:'Bawa bola dekat dengan kaki. Gunakan sisi luar dan dalam kaki, dan angkat kepala agar bisa melihat teman maupun lawan.',c:'c1'},
+  {ic:'🎯',t:'Mengoper bola',d:'Gunakan bagian dalam kaki agar operan akurat. Arahkan operan ke kaki teman atau ke ruang kosong di depannya.',c:'c2'},
+  {ic:'🚀',t:'Menembak',d:'Gunakan punggung kaki dan kunci pergelangan kaki. Bidik sudut gawang, bukan tepat ke arah penjaga gawang.',c:'c3'},
+  {ic:'🧲',t:'Menerima bola',d:'Sambut bola dengan telapak kaki atau paha, lalu langsung arahkan ke ruang kosong agar bola tetap dalam kontrol.',c:'c4'}
+];
+function speakTek(i){SFX.klik();speak(TEK[i].t+'. '+TEK[i].d);}
+document.getElementById('tek').innerHTML=TEK.map((k,i)=>`<div class="card ${k.c}"><div class="ic">${k.ic}</div><h3>${k.t}</h3><p>${k.d}</p><button class="ctl" style="margin-top:12px;background:#14142B;border-color:#14142B;color:#fff" onclick="speakTek(${i})">🔊 Dengarkan</button></div>`).join('');
+
+/* ===== LAPANGAN (canvas 2D) ===== */
+const W=900,OX=50,OY=50,K=20;
+const X=m=>OX+m*K,Y=m=>OY+m*K;
+const lerp=(a,b,t)=>a+(b-a)*t;
+const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+function dot(c,x,y,r,col){c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fillStyle=col;c.fill();}
+function court(c){
+  c.fillStyle='#1565C0';c.fillRect(0,0,W,500);
+  for(let i=0;i<8;i++){c.fillStyle=i%2?'#2ECC71':'#27AE60';c.fillRect(OX+i*100,OY,100,400);}
+  c.strokeStyle='#fff';c.lineWidth=3;c.lineCap='round';
+  c.strokeRect(OX,OY,800,400);
+  c.beginPath();c.moveTo(X(20),Y(0));c.lineTo(X(20),Y(20));c.stroke();
+  c.beginPath();c.arc(X(20),Y(10),60,0,Math.PI*2);c.stroke();
+  dot(c,X(20),Y(10),4,'#fff');
+  [[OX,OY,0],[OX+800,OY,Math.PI/2],[OX+800,OY+400,Math.PI],[OX,OY+400,-Math.PI/2]].forEach(([x,y,a])=>{c.beginPath();c.arc(x,y,8,a,a+Math.PI/2);c.stroke();});
+  const mir=f=>{f();c.save();c.translate(W,0);c.scale(-1,1);f();c.restore();};
+  mir(()=>{
+    c.beginPath();c.arc(X(0),Y(8.5),120,-Math.PI/2,0);c.lineTo(X(6),Y(11.5));c.arc(X(0),Y(11.5),120,0,Math.PI/2);c.stroke();
+    dot(c,X(6),Y(10),4,'#fff');dot(c,X(10),Y(10),4,'#fff');
+    c.fillStyle='rgba(255,255,255,.35)';c.fillRect(34,220,16,60);c.strokeRect(34,220,16,60);
+  });
+}
+function marks(c,list){
+  c.font='800 16px Baloo 2,Arial,sans-serif';c.textAlign='center';c.textBaseline='middle';
+  list.forEach(([x,y,n])=>{
+    c.beginPath();c.arc(x,y,14,0,Math.PI*2);c.fillStyle='#FFD60A';c.fill();
+    c.lineWidth=3;c.strokeStyle='#14142B';c.stroke();
+    c.fillStyle='#14142B';c.fillText(n,x,y+1);
+  });
+}
+const pc=document.getElementById('peta').getContext('2d');
+court(pc);
+marks(pc,[[450,130,'1'],[120,190,'2'],[170,250,'3'],[250,250,'4'],[20,250,'5']]);
+
+/* ===== SIMULATOR ===== */
+const SCN=[
+{n:'Operan Segitiga',h:0,
+ p:[[12,10,'A','7'],[17,5,'A','9'],[17,15,'A','10'],[21,10,'A','11'],[2,10,'G','1'],[20,8,'B'],[20,12,'B'],[27,6,'B'],[27,14,'B']],
+ s:[
+  {t:'Pemain nomor 7 mengoper bola ke pemain nomor 9 di sisi kiri.',p:1},
+  {t:'Pemain 9 mengoper ke pemain 10 di sisi kanan. Inilah yang disebut operan segitiga.',p:2},
+  {t:'Pemain 10 mengoper ke pemain 11 yang bergerak masuk ke kotak penalti.',m:{3:[30,10]},p:3},
+  {t:'Pemain 11 menembak ke arah gawang!',sh:1,p:[40.6,10]}
+ ]},
+{n:'Umpan Terobosan',h:0,
+ p:[[14,10,'A','7'],[24,4,'A','9'],[18,15,'A','8'],[2,10,'G','1'],[28,7,'B'],[28,13,'B'],[32,10,'B'],[37,10,'B']],
+ s:[
+  {t:'Pemain 7 menggiring bola ke tengah sambil melihat ruang kosong di depan.',h:0,m:{0:[19,10]},p:[19,10]},
+  {t:'Pemain 9 berlari cepat ke belakang bek lawan. Ini disebut gerakan tanpa bola.',m:{1:[33,6]}},
+  {t:'Umpan terobosan! Bola dikirim melewati celah pertahanan lawan.',p:1},
+  {t:'Pemain 9 langsung menembak ke gawang!',sh:1,m:{1:[37,7]},p:[40.6,8]}
+ ]},
+{n:'Menggiring & Tembak',h:0,
+ p:[[9,14,'A','10'],[16,6,'A','8'],[2,10,'G','1'],[14,11,'B'],[17,15,'B'],[21,9,'B'],[24,13,'B'],[38,10,'B']],
+ s:[
+  {t:'Pemain 10 menggiring bola ke arah gawang. Bola tetap dekat dengan kaki.',h:0,m:{0:[15,9],3:[17,10]},p:[15,9]},
+  {t:'Bek lawan mendekat. Pemain 10 melakukan gerakan tipu lalu menggiring ke sisi kiri.',m:{0:[21,6],3:[19,7],4:[20,11]},p:[21,6]},
+  {t:'Ruang terbuka! Pemain 10 maju dan siap menembak.',m:{0:[30,7]},p:[30,7]},
+  {t:'Tembakan dengan punggung kaki ke sudut gawang!',sh:1,p:[40.6,8]}
+ ]}
+];
+const g=document.getElementById('sim').getContext('2d');
+const DUR=1500;
+let cur=0,st=0,el=0,spd=1,playing=false,S=null,pl=[],bp=[0,0],hold=0,trail=[],last=0;
+
+function load(i){
+  cur=i;st=0;el=0;S=null;playing=false;trail=[];
+  const d=SCN[i];pl=d.p.map(q=>[q[0],q[1]]);hold=d.h;bp=[...pl[hold]];
+  updChips();info();setBtn();
+}
+function begin(){
+  const s=SCN[cur].s[st];
+  if(!s){playing=false;SFX.peluit();say('Simulasi selesai. Bagus sekali!');setBtn();info();return;}
+  const to=pl.map((q,i)=>(s.m&&s.m[i])||q);
+  S={s,from:pl.map(q=>[...q]),to,bf:[...bp],
+     bt:s.p===undefined?[...bp]:typeof s.p==='number'?[...to[s.p]]:[...s.p],
+     hn:s.h!==undefined?s.h:typeof s.p==='number'?s.p:hold};
+  el=0;say(s.t);
+  if(s.sh)SFX.tembak();else if(typeof s.p==='number')SFX.operan();else SFX.klik();
+  info();
+}
+function commit(){if(!S)return;pl=S.to;bp=S.bt;hold=S.hn;S=null;el=0;st++;}
+function ballNow(){
+  if(!S)return bp;
+  const e=ease(Math.min(1,el/DUR));
+  return [lerp(S.bf[0],S.bt[0],e),lerp(S.bf[1],S.bt[1],e)];
+}
+function draw(){
+  court(g);
+  const d=SCN[cur];
+  let P=pl;
+  if(S){
+    const e=ease(Math.min(1,el/DUR));
+    P=S.from.map((a,i)=>[lerp(a[0],S.to[i][0],e),lerp(a[1],S.to[i][1],e)]);
+    g.setLineDash([12,10]);g.strokeStyle='rgba(255,255,255,.9)';g.lineWidth=3;
+    g.beginPath();g.moveTo(X(S.bf[0]),Y(S.bf[1]));g.lineTo(X(S.bt[0]),Y(S.bt[1]));g.stroke();
+    g.setLineDash([]);
+  }
+  trail.forEach((p,i)=>{g.globalAlpha=(i+1)/trail.length*.7;dot(g,X(p[0]),Y(p[1]),6,'#FFD60A');});
+  g.globalAlpha=1;
+  P.forEach((q,i)=>{
+    const tm=d.p[i][2],num=d.p[i][3];
+    g.beginPath();g.arc(X(q[0]),Y(q[1]),16,0,Math.PI*2);
+    g.fillStyle=tm==='A'?'#2563EB':tm==='B'?'#FF2D78':'#FFD60A';g.fill();
+    g.lineWidth=3;g.strokeStyle='#fff';g.stroke();
+    if(num){g.fillStyle=tm==='G'?'#14142B':'#fff';g.font='800 15px Baloo 2,Arial,sans-serif';g.textAlign='center';g.textBaseline='middle';g.fillText(num,X(q[0]),Y(q[1])+1);}
+  });
+  const B=ballNow();
+  dot(g,X(B[0]),Y(B[1]),10,'#fff');
+  g.lineWidth=2;g.strokeStyle='#14142B';g.beginPath();g.arc(X(B[0]),Y(B[1]),10,0,Math.PI*2);g.stroke();
+}
+function loop(ts){
+  const dt=last?Math.min(ts-last,64):0;last=ts;
+  if(playing){
+    if(!S)begin();
+    if(S){
+      el+=dt*spd;
+      trail.push(ballNow());if(trail.length>28)trail.shift();
+      if(el>=DUR)commit();
+    }
+  }
+  draw();
+  requestAnimationFrame(loop);
+}
+function togglePlay(){
+  ac();
+  if(!playing&&st>=SCN[cur].s.length)load(cur);
+  playing=!playing;setBtn();
+}
+function setBtn(){document.getElementById('bPlay').textContent=playing?'⏸ Jeda':'▶ Putar';}
+function info(){
+  const d=SCN[cur],s=d.s[st];
+  document.getElementById('info').innerHTML=s?`<b>Langkah ${st+1} dari ${d.s.length}:</b> ${s.t}`:'<b>Selesai ✅</b> Tekan Ulang untuk mencoba skenario ini lagi.';
+}
+function updChips(){document.querySelectorAll('.chip').forEach((b,i)=>b.classList.toggle('on',i===cur));}
+function pick(i){SFX.klik();load(i);}
+document.getElementById('chips').innerHTML=SCN.map((s,i)=>`<button class="chip" onclick="pick(${i})">${i+1}. ${s.n}</button>`).join('');
+
+/* ===== KUIS ===== */
+const Q=[
+  {q:'Berapa jumlah pemain setiap tim dalam satu pertandingan futsal di lapangan?',o:['4 pemain','5 pemain','6 pemain','11 pemain'],a:1,e:'Setiap tim berisi 5 pemain, termasuk 1 penjaga gawang.'},
+  {q:'Berapa lama satu pertandingan futsal resmi?',o:['2 × 15 menit','2 × 20 menit','2 × 45 menit','1 × 40 menit'],a:1,e:'Pertandingan futsal terdiri dari 2 babak, masing-masing 20 menit.'},
+  {q:'Berapa ukuran gawang futsal standar?',o:['5 m × 2 m','7,32 m × 2,44 m','3 m × 2 m','4 m × 3 m'],a:2,e:'Gawang futsal berukuran lebar 3 m dan tinggi 2 m.'},
+  {q:'Apa ciri khas bola futsal dibandingkan bola sepak?',o:['Lebih besar dan berat','Lebih kecil dan memantul rendah','Terbuat dari karet keras','Berwarna hitam semua'],a:1,e:'Bola futsal lebih kecil dan memantul rendah sehingga mudah dikontrol.'},
+  {q:'Bagian kaki mana yang paling sering dipakai untuk mengoper dengan akurat?',o:['Ujung jari kaki','Tumit','Bagian dalam kaki','Lutut'],a:2,e:'Bagian dalam kaki memberi kontrol dan ketepatan yang baik saat mengoper.'}
+];
+let qi=0,score=0;
+function renderQ(){
+  const box=document.getElementById('quiz');
+  document.getElementById('prog').style.width=(qi/Q.length*100)+'%';
+  if(qi>=Q.length){
+    const m=score===Q.length?'Luar biasa! Kamu sudah paham materi futsal 🏆':score>=3?'Bagus! Terus belajar dan berlatih 💪':'Ayo pelajari materi lagi, kamu pasti bisa! 📚';
+    box.innerHTML=`<h2 class="sec-title">Skor kamu: ${score} / ${Q.length}</h2><p style="font-size:1.1rem">${m}</p><button class="btn" style="margin-top:16px" onclick="restartQ()">Ulangi kuis</button>`;
+    SFX.peluit();return;
+  }
+  const q=Q[qi];
+  box.innerHTML=`<p style="color:#2563EB;font-weight:800">Soal ${qi+1} dari ${Q.length}</p><h3 style="margin:6px 0 4px;font-size:1.5rem">${q.q}</h3><div class="opts">${q.o.map((t,i)=>`<button class="opt" onclick="ans(${i})">${t}</button>`).join('')}</div><div id="fb"></div>`;
+}
+function ans(i){
+  const q=Q[qi];
+  document.querySelectorAll('.opt').forEach((b,j)=>{
+    b.disabled=true;
+    if(j===q.a)b.classList.add('ok');else if(j===i)b.classList.add('no');
+  });
+  const ok=i===q.a;
+  if(ok){score++;SFX.benar();}else SFX.salah();
+  document.getElementById('fb').innerHTML=`<div class="fb" style="background:${ok?'#DCFCE7':'#FFE4EF'}">${ok?'✅ Benar! ':'❌ Kurang tepat. '}${q.e}</div><button class="btn" style="margin-top:12px" onclick="nextQ()">Lanjut</button>`;
+  say((ok?'Benar. ':'Kurang tepat. ')+q.e);
+}
+function nextQ(){SFX.klik();qi++;renderQ();}
+function restartQ(){qi=0;score=0;renderQ();}
+
+/* ===== INIT ===== */
+load(0);
+renderQ();
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>
